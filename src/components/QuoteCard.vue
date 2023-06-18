@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
 defineProps({
-    quote: {
-        type: Object,
-        'required': true
-    },
+  quote: {
+    type: Object,
+    required: true
+  }
 })
 </script>
 
