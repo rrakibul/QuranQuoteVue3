@@ -1,33 +1,20 @@
 <script setup>
 import QuoteCard from '../components/QuoteCard.vue'
-import { ref } from 'vue'
+import QuoteService from '@/services/QuoteService.js'
+import { onMounted, ref } from 'vue'
 
-const quotes = ref([
-  {
-    id: 100,
-    category: 'animal',
-    title: 'Show Bull Dog',
-    description: 'this is a ferosous dog',
-    date: '21 June, 2023',
-    time: '8:45 AM'
-  },
-  {
-    id: 101,
-    category: 'animal',
-    title: 'Show Pushy Cat',
-    description: 'this is a lovely cat',
-    date: '22 June, 2023',
-    time: '8:45 AM'
-  },
-  {
-    id: 102,
-    category: 'animal',
-    title: 'Show Cow',
-    description: 'this is a milking cow',
-    date: '23 June, 2023',
-    time: '8:45 AM'
-  }
-])
+const quotes = ref(null)
+
+onMounted(() => {
+  QuoteService.getQuotes()
+    .then((response) => {
+      console.log(response)
+      quotes.value = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
 </script>
 
 <template>
