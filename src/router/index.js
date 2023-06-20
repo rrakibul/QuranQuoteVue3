@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import QuoteListView from '../views/QuoteListView.vue'
+import ChapterView from '../views/ChapterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,12 @@ const router = createRouter({
       path: '/',
       name: 'event-list',
       component: QuoteListView
+    },
+    {
+      path: '/chapter/:id',
+      name: 'chapter',
+      props: true,
+      component: ChapterView
     },
     {
       path: '/about',

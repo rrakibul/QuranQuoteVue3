@@ -1,5 +1,4 @@
 <script setup>
-import QuoteCard from '../components/QuoteCard.vue'
 import QuoteService from '@/services/QuoteService.js'
 import { onMounted, ref } from 'vue'
 
@@ -8,8 +7,8 @@ const quotes = ref(null)
 onMounted(() => {
   QuoteService.getQuotes()
     .then((response) => {
-      console.log(response)
-      quotes.value = response.data
+      // console.log(response.data.quran)
+      quotes.value = response.data.chapter
     })
     .catch((error) => {
       console.log(error)
@@ -18,9 +17,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="quotes">
+  <div class="quotes" v-if="quotes">
     <h2>Quran Quotes</h2>
-    <QuoteCard v-for="quote in quotes" :key="quote.id" :quote="quote" />
+    <div v-for="i in 114" :key="i">
+      <RouterLink :to="{ name: 'chapter', params: { id: i } }"> Chapter: {{ i }} </RouterLink>
+    </div>
   </div>
 </template>
 

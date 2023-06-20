@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 defineProps({
   quote: {
     type: Object,
@@ -11,8 +9,22 @@ defineProps({
 
 <template>
   <div class="event-card">
-    <h2>{{ quote.title }}</h2>
-    <span>@{{ quote.time }} on {{ quote.date }}</span>
+    <img
+      :src="'https://everyayah.com/data/images_png/' + quote.chapter + '_' + quote.verse + '.png'"
+      :alt="'Chapter: ' + quote.chapter + ', Verse: ' + quote.verse"
+    />
+    <audio
+      id="newMediaPlayer"
+      :src="
+        'https://everyayah.com/data/AbdulSamad_64kbps_QuranExplorer.Com/' +
+        quote.chapter.toString().padStart(3, '0') +
+        quote.verse.toString().padStart(3, '0') +
+        '.mp3'
+      "
+      controls="controls"
+    ></audio>
+    <h2>{{ quote.text }}</h2>
+    <span>Verse: {{ quote.verse }}</span>
   </div>
 </template>
 

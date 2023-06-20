@@ -25,7 +25,7 @@ onMounted(() => {
 <template>
   <div class="quotes" v-if="quotes">
     <h2>Chapter: {{ props.id }}</h2>
-    <QuoteCard v-for="quote in quotes" :key="quote.chapter+'-'+quote.verse" :quote="quote" />
+    <QuoteCard v-for="quote in quotes" :key="quote.chapter + '-' + quote.verse" :quote="quote" />
   </div>
 </template>
 
